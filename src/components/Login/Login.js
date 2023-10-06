@@ -14,29 +14,36 @@ const Login = (props) => {
   useEffect(() => {
     console.log('Effect RUNNING');
     return () => {
-      console.log('clean up effevt');
+      console.log('clean up effevt')
     }
-  },[])
-  useEffect(() => {
-    const identifier = setTimeout(() => {
-      console.log('checking form validation ');
-      setFormIsValid(
-        enteredEmail.includes("@") && enteredPassword.trim().length > 6
-      );
-      return () => {
-        console.log(")............(");
-        clearTimeout(identifier);
-      };
-    }, [enteredEmail, enteredPassword]);},500);
+  },[enteredEmail])
+  // useEffect(() => {
+  //   const identifier = setTimeout(() => {
+  //     console.log('checking form validation ');
+  //     setFormIsValid(
+  //       enteredEmail.includes("@") && enteredPassword.trim().length > 6
+  //     );
+  //     return () => {
+  //       console.log(")............(");
+  //       clearTimeout(identifier);
+  //     };
+  //   }, [enteredEmail, enteredPassword]);},500);
 
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
-  };
+  
 
+  setFormIsValid (
+event.target.value.includes('@') && enteredPassword.trim().length > 6
+  );
+};
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
 
+  setFormIsValid(
+    event.target.value.includes("@") && enteredPassword.trim().length > 6
+  );
     
   };
 
